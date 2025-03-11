@@ -1,0 +1,212 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-SG style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal>&lt;!DOCTYPE html&gt;</p>
+
+<p class=MsoNormal>&lt;html lang=&quot;en&quot;&gt;</p>
+
+<p class=MsoNormal>&lt;head&gt;</p>
+
+<p class=MsoNormal>    &lt;meta charset=&quot;UTF-8&quot;&gt;</p>
+
+<p class=MsoNormal>    &lt;meta name=&quot;viewport&quot;
+content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</p>
+
+<p class=MsoNormal>    &lt;title&gt;Floating Image Scanner&lt;/title&gt;</p>
+
+<p class=MsoNormal>    &lt;style&gt;</p>
+
+<p class=MsoNormal>        body {</p>
+
+<p class=MsoNormal>            background-color: black;</p>
+
+<p class=MsoNormal>            color: white;</p>
+
+<p class=MsoNormal>            text-align: center;</p>
+
+<p class=MsoNormal>            font-family: Arial, sans-serif;</p>
+
+<p class=MsoNormal>            overflow: hidden;</p>
+
+<p class=MsoNormal>        }</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>        #uploadInput {</p>
+
+<p class=MsoNormal>            margin: 20px;</p>
+
+<p class=MsoNormal>            padding: 10px;</p>
+
+<p class=MsoNormal>            border: 2px solid white;</p>
+
+<p class=MsoNormal>            background: transparent;</p>
+
+<p class=MsoNormal>            color: white;</p>
+
+<p class=MsoNormal>            position: absolute;</p>
+
+<p class=MsoNormal>            top: 20px;</p>
+
+<p class=MsoNormal>            left: 50%;</p>
+
+<p class=MsoNormal>            transform: translateX(-50%);</p>
+
+<p class=MsoNormal>            z-index: 1000; /* Ensure input is always
+accessible */</p>
+
+<p class=MsoNormal>        }</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>        .floating-image {</p>
+
+<p class=MsoNormal>            position: absolute;</p>
+
+<p class=MsoNormal>            width: 100px;</p>
+
+<p class=MsoNormal>            transition: transform 5s linear;</p>
+
+<p class=MsoNormal>        }</p>
+
+<p class=MsoNormal>    &lt;/style&gt;</p>
+
+<p class=MsoNormal>&lt;/head&gt;</p>
+
+<p class=MsoNormal>&lt;body&gt;</p>
+
+<p class=MsoNormal>    &lt;h1&gt;Scan and Float Your Image&lt;/h1&gt;</p>
+
+<p class=MsoNormal>    &lt;input type=&quot;file&quot;
+id=&quot;uploadInput&quot; accept=&quot;image/*&quot;&gt;</p>
+
+<p class=MsoNormal>    </p>
+
+<p class=MsoNormal>    &lt;script&gt;</p>
+
+<p class=MsoNormal>        let zIndexCounter = 1; // Keeps track of layering order</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>       
+document.getElementById('uploadInput').addEventListener('change',
+function(event) {</p>
+
+<p class=MsoNormal>            const file = event.target.files[0];</p>
+
+<p class=MsoNormal>            if (file) {</p>
+
+<p class=MsoNormal>                const reader = new FileReader();</p>
+
+<p class=MsoNormal>                reader.onload = function(e) {</p>
+
+<p class=MsoNormal>                    createFloatingImage(e.target.result);</p>
+
+<p class=MsoNormal>                };</p>
+
+<p class=MsoNormal>                reader.readAsDataURL(file);</p>
+
+<p class=MsoNormal>            }</p>
+
+<p class=MsoNormal>        });</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>        function createFloatingImage(src) {</p>
+
+<p class=MsoNormal>            const img = document.createElement('img');</p>
+
+<p class=MsoNormal>            img.src = src;</p>
+
+<p class=MsoNormal>            img.classList.add('floating-image');</p>
+
+<p class=MsoNormal>            img.style.width = `${Math.random() * 80 +
+50}px`; // Random size</p>
+
+<p class=MsoNormal>            img.style.left = `${Math.random() *
+window.innerWidth}px`;</p>
+
+<p class=MsoNormal>            img.style.top = `${Math.random() *
+window.innerHeight}px`;</p>
+
+<p class=MsoNormal>            img.style.zIndex = zIndexCounter++; // Ensure
+newest image is on top</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>            document.body.appendChild(img);</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>            // Animate floating effect</p>
+
+<p class=MsoNormal>            animateFloating(img);</p>
+
+<p class=MsoNormal>        }</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>        function animateFloating(img) {</p>
+
+<p class=MsoNormal>            let angle = Math.random() * 360;</p>
+
+<p class=MsoNormal>            setInterval(() =&gt; {</p>
+
+<p class=MsoNormal>                img.style.transform =
+`translate(${Math.sin(angle) * 50}px, ${Math.cos(angle) * 50}px)`;</p>
+
+<p class=MsoNormal>                angle += 0.1;</p>
+
+<p class=MsoNormal>            }, 100);</p>
+
+<p class=MsoNormal>        }</p>
+
+<p class=MsoNormal>    &lt;/script&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<p class=MsoNormal>&lt;/html&gt;</p>
+
+</div>
+
+</body>
+
+</html>
